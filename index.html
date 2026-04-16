@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bachelor Point S05</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:20px 0;
+  background: linear-gradient(135deg,#0f2027,#2c5364);
+  overflow-y:auto;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body::before{
+  content:'';
+  position:absolute;
+  width:300px;
+  height:300px;
+  background:#00ffcc;
+  filter:blur(80px);
+  opacity:0.3;
+  animation:pulse 5s infinite;
+  z-index:0;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+}
+
+.rain{
+  position:fixed;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1;
+}
+
+.rain span{
+  position:absolute;
+  width:2px;
+  height:10px;
+  background:#00ffcc;
+  opacity:0.4;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{ transform:translateY(110vh); }
+}
+
+.container{
+  position:relative;
+  width:100%;
+  max-width:360px;
+  padding:20px;
+  border-radius:20px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 20px rgba(0,255,200,0.3);
+  text-align:center;
+  color:white;
+  z-index:2;
+}
+
+.poster{
+  width:100%;
+  border-radius:15px;
+}
+
+.title{
+  margin-top:10px;
+  color:#00ffcc;
+  text-shadow:0 0 8px #00ffcc;
+}
+
+.link-btn{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border:none;
+  border-radius:12px;
+  background:rgba(0,255,200,0.2);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.link-btn:hover{
+  background:#00ffcc;
+  color:black;
+  transform:scale(1.03);
+}
+
+.dvd{
+  position:fixed;
+  width:150px;
+  z-index:999;
+  pointer-events:none;
+  filter:drop-shadow(0 0 10px #00ffcc);
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgSound" loop>
+  <source src="https://file.garden/aZfQ0ZO7dDZU3Ub3/Track_BP.mp3">
+</audio>
+
+<div class="rain"></div>
+
+<img src="https://i.postimg.cc/2jBqr1nL/images_(2).jpg" class="dvd">
+
+<div class="container">
+
+<img src="https://i.postimg.cc/x8xKfM7n/bachelorpoint-c11.webp" class="poster">
+
+<div class="title">Bachelor Point Season 05 (1080p)</div>
+
+<button class="link-btn" onclick="go('ep81_88')">🎬 Episode 81-88 (1080p) For I-Phone User</button>
+<button class="link-btn" onclick="go('ep81')">🎬 Episode 81 (1080p)</button>
+<button class="link-btn" onclick="go('ep82')">🎬 Episode 82 (1080p)</button>
+<button class="link-btn" onclick="go('ep83')">🎬 Episode 83 (1080p)</button>
+<button class="link-btn" onclick="go('ep84')">🎬 Episode 84 (1080p)</button>
+<button class="link-btn" onclick="go('ep85')">🎬 Episode 85 (1080p)</button>
+<button class="link-btn" onclick="go('ep86')">🎬 Episode 86 (1080p)</button>
+<button class="link-btn" onclick="go('ep87')">🎬 Episode 87 (1080p)</button>
+<button class="link-btn" onclick="go('ep88')">🎬 Episode 88 (1080p)</button>
+
+</div>
+
+<script>
+const links = {
+  ep81_88: "https://drive.google.com/file/d/1cTQfPDSCuA5d0KgC1uaDkh-S5A4BoM6L/view?usp=drivesdk",
+  ep81: "https://pub-c48f3bfcf6dd4e05a0c937bc88afc4a6.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E81%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep82: "https://pub-26886920aea543a899611bc1ca2dabd1.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E82%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep83: "https://pub-26886920aea543a899611bc1ca2dabd1.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E83%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep84: "https://pub-26886920aea543a899611bc1ca2dabd1.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E84%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep85: "https://pub-10da1e1b5d8545d688b95579b7b991ee.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E85%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep86: "https://pub-c48f3bfcf6dd4e05a0c937bc88afc4a6.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E86%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep87: "https://pub-26886920aea543a899611bc1ca2dabd1.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E87%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep88: "https://pub-26886920aea543a899611bc1ca2dabd1.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E88%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv"
+};
+
+const sound = document.getElementById("bgSound");
+sound.volume = 0.9;
+
+window.addEventListener("load",()=>{
+  sound.play().catch(()=>{});
+});
+
+document.body.addEventListener("click",()=>{
+  sound.play();
+},{once:true});
+
+const rain=document.querySelector('.rain');
+for(let i=0;i<30;i++){
+let d=document.createElement('span');
+d.style.left=Math.random()*100+"vw";
+d.style.animationDuration=(Math.random()*2+1)+"s";
+rain.appendChild(d);
+}
+
+const dvd=document.querySelector('.dvd');
+let x=100,y=100,dx=1.5,dy=1.5;
+
+function animate(){
+const w=innerWidth-dvd.clientWidth;
+const h=innerHeight-dvd.clientHeight;
+
+x+=dx;
+y+=dy;
+
+if(x<=0||x>=w)dx*=-1;
+if(y<=0||y>=h)dy*=-1;
+
+dvd.style.transform=`translate(${x}px,${y}px)`;
+
+requestAnimationFrame(animate);
+}
+animate();
+
+// ✅ FIXED LINK FUNCTION
+function go(key){
+  const url = links[key];
+
+  if(url){
+    window.open(url, '_blank'); // 🔥 FIXED
+  } else {
+    alert("Link not found!");
+  }
+}
+</script>
+
+</body>
+</html>
