@@ -1,13 +1,10 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bachelor Point S05</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
-<style>
 <style>
 *{
   margin:0;
@@ -163,13 +160,12 @@ body::before{
   100% { stroke-dashoffset: 275; }
 }
 
-/* YOUR UI */
 .rain{
   position:fixed;
   width:100%;
   height:100%;
   pointer-events:none;
-  z-index:5;
+  z-index:1;
 }
 
 .rain span{
@@ -177,7 +173,7 @@ body::before{
   width:2px;
   height:10px;
   background:#00ffcc;
-  opacity:0.8;
+  opacity:0.4;
   animation:fall linear infinite;
 }
 
@@ -239,7 +235,6 @@ body::before{
 </head>
 
 <body>
-
 <!-- 🔥 3 LOADER -->
 <div id="preloader">
 
@@ -263,29 +258,34 @@ body::before{
 
 </div>
 
+
 <audio id="bgSound" loop>
   <source src="https://file.garden/aZfQ0ZO7dDZU3Ub3/Track_BP.mp3">
 </audio>
 
 <div class="rain"></div>
+
 <img src="https://i.postimg.cc/2jBqr1nL/images_(2).jpg" class="dvd">
 
 <div class="container">
+
 <img src="https://i.postimg.cc/x8xKfM7n/bachelorpoint-c11.webp" class="poster">
 
 <div class="title">Bachelor Point Season 05 (1080p) G-Drive</div>
+
 <button class="link-btn" onclick="go('ep81_88')">🎬 Episode 81-88 (1080p) For 🍎 I-Phone User</button>
 
 <div class="title">Bachelor Point Season 05 Episode 81-88 Single Episode (1080p)</div>
 
-<button class="link-btn" onclick="go('ep81')">🎬 Episode 81</button>
-<button class="link-btn" onclick="go('ep82')">🎬 Episode 82</button>
-<button class="link-btn" onclick="go('ep83')">🎬 Episode 83</button>
-<button class="link-btn" onclick="go('ep84')">🎬 Episode 84</button>
-<button class="link-btn" onclick="go('ep85')">🎬 Episode 85</button>
-<button class="link-btn" onclick="go('ep86')">🎬 Episode 86</button>
-<button class="link-btn" onclick="go('ep87')">🎬 Episode 87</button>
-<button class="link-btn" onclick="go('ep88')">🎬 Episode 88</button>
+<button class="link-btn" onclick="go('ep81')">🎬 Episode 81 (1080p)</button>
+<button class="link-btn" onclick="go('ep82')">🎬 Episode 82 (1080p)</button>
+<button class="link-btn" onclick="go('ep83')">🎬 Episode 83 (1080p)</button>
+<button class="link-btn" onclick="go('ep84')">🎬 Episode 84 (1080p)</button>
+<button class="link-btn" onclick="go('ep85')">🎬 Episode 85 (1080p)</button>
+<button class="link-btn" onclick="go('ep86')">🎬 Episode 86 (1080p)</button>
+<button class="link-btn" onclick="go('ep87')">🎬 Episode 87 (1080p)</button>
+<button class="link-btn" onclick="go('ep88')">🎬 Episode 88 (1080p)</button>
+
 </div>
 
 <script>
