@@ -231,6 +231,139 @@ body::before{
   pointer-events:none;
   filter:drop-shadow(0 0 10px #00ffcc);
 }
+
+/* ☕ Floating Coffee Button */
+.coffee-float{
+position:fixed;
+bottom:18px;
+right:18px;
+width:45px;
+height:45px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:22px;
+text-decoration:none;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.15);
+box-shadow:0 0 15px rgba(255,183,3,.4);
+z-index:9999;
+transition:.3s;
+overflow:hidden;
+}
+
+.coffee-float:hover{
+width:160px;
+border-radius:50px;
+}
+
+.coffee-float span{
+position:absolute;
+right:15px;
+font-size:14px;
+font-weight:600;
+white-space:nowrap;
+opacity:0;
+transition:.3s;
+color:white;
+}
+
+.coffee-float:hover span{
+opacity:1;
+}
+
+/* ☕ Coffee Card */
+.coffee-card{
+margin-top:15px;
+padding:15px;
+border-radius:15px;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(8px);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.coffee-card h3{
+color:#ffb703;
+margin-bottom:8px;
+}
+
+.coffee-btn{
+display:inline-block;
+margin-top:10px;
+padding:10px 20px;
+border-radius:12px;
+text-decoration:none;
+background:#ffb703;
+color:black;
+font-weight:bold;
+}
+
+/* 🎉 Premium Popup */
+.popup-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(6px);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.popup{
+width:90%;
+max-width:320px;
+background:rgba(15,15,15,.95);
+padding:25px;
+border-radius:20px;
+text-align:center;
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 0 30px rgba(0,255,204,.25);
+animation:popupShow .35s ease;
+}
+
+.popup h2{
+color:#ffb703;
+margin-bottom:10px;
+}
+
+.popup p{
+color:#ddd;
+font-size:14px;
+margin-bottom:15px;
+}
+
+.popup-btn{
+display:inline-block;
+padding:12px 20px;
+background:#ffb703;
+color:black;
+font-weight:bold;
+text-decoration:none;
+border-radius:12px;
+}
+
+.close-popup{
+margin-top:12px;
+background:none;
+border:none;
+color:#aaa;
+cursor:pointer;
+font-size:14px;
+}
+
+@keyframes popupShow{
+from{
+opacity:0;
+transform:scale(.8);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
 </style>
 </head>
 
@@ -270,6 +403,17 @@ body::before{
 <div class="container">
 
 <img src="https://i.postimg.cc/Prvbvb5R/IMG-20260522-141945.jpg" class="poster">
+
+<div class="coffee-card">
+<h3>☕ Support The Creator</h3>
+<p>If you enjoy these uploads, consider buying me a coffee ❤️</p>
+
+<a href="https://bhokto.com.bd/pay/shihabrahman"
+class="coffee-btn"
+target="_blank">
+Buy Me Coffee
+</a>
+</div>
 
 <div class="title">Bachelor Point Season 05 (1080p) G-Drive</div>
 
@@ -348,7 +492,59 @@ function go(key){
     window.open(url, '_blank');
   }
 }
-</script>
 
+function closeCoffeePopup(){
+document.getElementById("coffeePopup").style.display="none";
+localStorage.setItem("coffeePopupSeen",Date.now());
+}
+
+window.addEventListener("load",()=>{
+
+const lastSeen=localStorage.getItem("coffeePopupSeen");
+
+if(
+!lastSeen ||
+(Date.now()-parseInt(lastSeen)) > 86400000
+){
+setTimeout(()=>{
+document.getElementById("coffeePopup").style.display="flex";
+},2500);
+}
+
+});
+</script>
+<!-- Floating Coffee Button -->
+<a href="https://bhokto.com.bd/pay/shihabrahman"
+class="coffee-float"
+target="_blank">
+☕
+<span>Buy Me Coffee</span>
+</a>
+
+<!-- Premium Popup -->
+<div class="popup-overlay" id="coffeePopup">
+<div class="popup">
+
+<h2>☕ Enjoying The Content?</h2>
+
+<p>
+Support future uploads and server costs by buying me a coffee ❤️
+</p>
+
+<a href="https://bhokto.com.bd/pay/shihabrahman"
+class="popup-btn"
+target="_blank">
+Buy Me Coffee
+</a>
+
+<br>
+
+<button class="close-popup"
+onclick="closeCoffeePopup()">
+Maybe Later
+</button>
+
+</div>
+</div>
 </body>
 </html>
