@@ -419,26 +419,33 @@ Buy Me Coffee
 
 <button class="link-btn" onclick="go('ep97_104')">🎬 Episode 97-100 (1080p) For 🍎 I-Phone User</button>
 
+<button class="link-btn" onclick="go('ep101_104')">🎬 Episode 101-104 (1080p) For 🍎 I-Phone User</button>
+
 <div class="title">Bachelor Point Season 05 Episode 97-100 Single Episode (1080p)</div>
 
 <button class="link-btn" onclick="go('ep97')">🎬 Episode 97 (1080p)</button>
 <button class="link-btn" onclick="go('ep98')">🎬 Episode 98 (1080p)</button>
 <button class="link-btn" onclick="go('ep99')">🎬 Episode 99 (1080p)</button>
 <button class="link-btn" onclick="go('ep100')">🎬 Episode 100 (1080p)</button>
+<button class="link-btn" onclick="go('ep101')">🎬 Episode 101 (1080p)</button>
+<button class="link-btn" onclick="go('ep102')">🎬 Episode 102 (1080p)</button>
+<button class="link-btn" onclick="go('ep103')">🎬 Episode 103 (1080p)</button>
+<button class="link-btn" onclick="go('ep104')">🎬 Episode 104 (1080p)</button>
 
 </div>
 
 <script>
 const links = {
-  ep97_104: "https://drive.google.com/file/d/1aIr2DMQmTBNzgDi0BeMPlyRSp7lTlF7O/view?usp=drivesdk",
+  ep97_100: "https://drive.google.com/file/d/1aIr2DMQmTBNzgDi0BeMPlyRSp7lTlF7O/view?usp=drivesdk",
+  ep101_104: "https://drive.google.com/file/d/1qW3ogToKvVv1CEi1bv2h4JxQWEqnMpeX/view?usp=drivesdk",
   ep97: "https://pub-3fdb3653cdc9425a85e9f3cc7842a9e4.r2.dev/49c0679d1824a801ac51deb0592b5a02?token=1783605912",
   ep98: "https://pub-d27dd7746bfa4fb48ceec211068bbaa5.r2.dev/c6370d31630eb7316e5f8945b0e111e1?token=1783607020",
   ep99: "https://pub-d230143a7057441cbed962dd1f7a9ce8.r2.dev/44d42bb5514427437902055289c27ac0?token=1783607057",
   ep100: "https://cdn.foxcloud.rest/?url=de07c0ea1233c51df8fe843f99b7b042bd1c70d453fe42844d5dd9345b4b77e7626f746a8a02c8e1a86196cd8bd46e64408585bf5996237ff180adf9068ecff993b8ff78360970dd218e77d5da68216d::cfa9fe6bf78637e00c5abfc33ca47c6b&bytes=586201551",
-  ep101: "Link101",
-  ep102: "Link102",
-  ep103: "Link103",
-  ep104: "Link104"
+  ep101: "https://pub-87e02c2f0e8941be964da8513404e392.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E101%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep102: "https://pub-af45f79dddd146dcaf6b25c8102f263e.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E102%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep103: "https://pub-af45f79dddd146dcaf6b25c8102f263e.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E102%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep104: "https://pub-5fec8fc694d94931914e330ee37acaab.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E104%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv"
 };
 
 const sound = document.getElementById("bgSound");
@@ -449,7 +456,7 @@ window.addEventListener("load",()=>{
   // 🔥 hide loader
   setTimeout(()=>{
     document.getElementById("preloader").style.display="none";
-  },750);
+  },200);
 });
 
 document.body.addEventListener("click",()=>{
