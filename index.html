@@ -15,11 +15,9 @@
 
 body{
   min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  padding:20px 0;
-  background: linear-gradient(135deg,#0f2027,#2c5364);
+  padding:20px 12px;
+  background:linear-gradient(135deg,#0f2027,#2c5364);
+  overflow-x:hidden;
   overflow-y:auto;
 }
 
@@ -29,9 +27,12 @@ html{
 
 body::before{
   content:'';
-  position:absolute;
+  position:fixed;
   width:300px;
   height:300px;
+  left:50%;
+  top:20%;
+  transform:translateX(-50%);
   background:#00ffcc;
   filter:blur(80px);
   opacity:0.3;
@@ -44,87 +45,23 @@ body::before{
   50%{transform:scale(1.2);}
 }
 
-/* 🔥 PRELOADER */
-#preloader{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:black;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:99999;
+@media (max-width:480px){
+  .coffee-float{
+    width:48px;
+    height:122px;
+    right:max(9px, env(safe-area-inset-right)) !important;
+    border-radius:25px;
+  }
+
+  .coffee-float::before{
+    border-radius:24px;
+  }
+
+  .coffee-float:hover{
+    width:54px;
+  }
 }
 
-/* 🔥 ORIGINAL LOADER */
-.loader {
-  --path: white;
-  --dot: #f40af0;
-  --duration: 3s;
-  width: 44px;
-  height: 44px;
-  position: relative;
-  display:inline-block;
-  margin: 0 16px; /* ✅ PERFECT SPACING */
-}
-
-.loader:before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  position: absolute;
-  display: block;
-  background: var(--dot);
-  top: 37px;
-  left: 19px;
-  transform: translate(-18px, -18px);
-  animation: dotRect var(--duration) cubic-bezier(0.785,0.135,0.15,0.86) infinite;
-}
-
-.loader svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.loader svg rect,
-.loader svg polygon,
-.loader svg circle {
-  fill: none;
-  stroke: var(--path);
-  stroke-width: 10px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
-
-.loader svg polygon {
-  stroke-dasharray: 145 76 145 76;
-  animation: pathTriangle var(--duration) cubic-bezier(0.785,0.135,0.15,0.86) infinite;
-}
-
-.loader svg rect {
-  stroke-dasharray: 192 64 192 64;
-  animation: pathRect var(--duration) cubic-bezier(0.785,0.135,0.15,0.86) infinite;
-}
-
-.loader svg circle {
-  stroke-dasharray: 150 50 150 50;
-  stroke-dashoffset: 75;
-  animation: pathCircle var(--duration) cubic-bezier(0.785,0.135,0.15,0.86) infinite;
-}
-
-.loader.triangle {
-  width: 48px;
-}
-
-.loader.triangle:before {
-  left: 21px;
-  transform: translate(-10px, -18px);
-  animation: dotTriangle var(--duration) cubic-bezier(0.785,0.135,0.15,0.86) infinite;
-}
 
 /* animations */
 @keyframes pathTriangle {
@@ -185,6 +122,7 @@ body::before{
   position:relative;
   width:100%;
   max-width:360px;
+  margin:0 auto;
   padding:20px;
   border-radius:20px;
   background:rgba(0,0,0,0.6);
@@ -216,6 +154,7 @@ body::before{
   color:white;
   cursor:pointer;
   transition:0.3s;
+  position:relative;
 }
 
 .link-btn:hover{
@@ -224,54 +163,88 @@ body::before{
   transform:scale(1.03);
 }
 
-.dvd{
-  position:fixed;
-  width:150px;
-  z-index:999;
-  pointer-events:none;
-  filter:drop-shadow(0 0 10px #00ffcc);
 }
 
-/* ☕ Floating Coffee Button */
+/* ☕ Premium Floating Support Button */
 .coffee-float{
-position:fixed;
-bottom:18px;
-right:18px;
-width:45px;
-height:45px;
-border-radius:50%;
+position:fixed !important;
+top:50% !important;
+right:max(12px, env(safe-area-inset-right)) !important;
+left:auto !important;
+bottom:auto !important;
+transform:translateY(-50%) !important;
+width:52px;
+height:138px;
+border-radius:28px;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-font-size:22px;
+gap:10px;
+font-size:23px;
 text-decoration:none;
-background:rgba(255,255,255,0.12);
-backdrop-filter:blur(12px);
-border:1px solid rgba(255,255,255,0.15);
-box-shadow:0 0 15px rgba(255,183,3,.4);
-z-index:9999;
-transition:.3s;
+color:#fff;
+background:linear-gradient(160deg,rgba(255,255,255,.18),rgba(255,255,255,.06));
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.22);
+box-shadow:
+0 8px 30px rgba(0,0,0,.35),
+0 0 22px rgba(255,183,3,.22),
+inset 0 1px 0 rgba(255,255,255,.18);
+z-index:99999;
+transition:width .3s ease, box-shadow .3s ease, background .3s ease;
 overflow:hidden;
+isolation:isolate;
 }
 
-.coffee-float:hover{
-width:160px;
-border-radius:50px;
+.coffee-float::before{
+content:"";
+position:absolute;
+inset:1px;
+border-radius:27px;
+background:linear-gradient(180deg,rgba(255,255,255,.10),transparent 45%,rgba(255,183,3,.06));
+pointer-events:none;
+z-index:-1;
+}
+
+.coffee-float::after{
+content:"";
+position:absolute;
+top:13px;
+left:50%;
+width:24px;
+height:2px;
+border-radius:10px;
+background:rgba(255,255,255,.35);
+transform:translateX(-50%);
 }
 
 .coffee-float span{
-position:absolute;
-right:15px;
-font-size:14px;
-font-weight:600;
+position:static;
+font-size:11px;
+font-weight:700;
+letter-spacing:2px;
+writing-mode:vertical-rl;
+text-orientation:mixed;
 white-space:nowrap;
-opacity:0;
+opacity:.9;
+color:rgba(255,255,255,.92);
+text-shadow:0 1px 8px rgba(0,0,0,.4);
 transition:.3s;
-color:white;
+}
+
+.coffee-float:hover{
+width:62px;
+background:linear-gradient(160deg,rgba(255,183,3,.28),rgba(255,255,255,.08));
+box-shadow:
+0 10px 35px rgba(0,0,0,.4),
+0 0 30px rgba(255,183,3,.42),
+inset 0 1px 0 rgba(255,255,255,.25);
 }
 
 .coffee-float:hover span{
-opacity:1;
+color:#ffcf4a;
 }
 
 /* ☕ Coffee Card */
@@ -304,6 +277,8 @@ font-weight:bold;
 .popup-overlay{
 position:fixed;
 inset:0;
+width:100%;
+height:100%;
 background:rgba(0,0,0,.75);
 backdrop-filter:blur(6px);
 display:none;
@@ -368,28 +343,6 @@ transform:scale(1);
 </head>
 
 <body>
-<!-- 🔥 3 LOADER -->
-<div id="preloader">
-
-  <div class="loader">
-    <svg viewBox="0 0 80 80">
-      <circle cx="40" cy="40" r="32"></circle>
-    </svg>
-  </div>
-
-  <div class="loader triangle">
-    <svg viewBox="0 0 86 80">
-      <polygon points="43 8 79 72 7 72"></polygon>
-    </svg>
-  </div>
-
-  <div class="loader">
-    <svg viewBox="0 0 80 80">
-      <rect x="8" y="8" width="64" height="64"></rect>
-    </svg>
-  </div>
-
-</div>
 
 
 <audio id="bgSound" loop>
@@ -398,11 +351,9 @@ transform:scale(1);
 
 <div class="rain"></div>
 
-<img src="https://i.postimg.cc/2jBqr1nL/images_(2).jpg" class="dvd">
-
 <div class="container">
 
-<img src="https://i.postimg.cc/R0SdB7yK/Picsart-26-07-09-20-40-53-799.jpg" class="poster">
+<img src="https://i.postimg.cc/Fssdhf7C/1b2ac3285db9d8473bb6ebf69b3a3e63.webp" class="poster">
 
 <div class="coffee-card">
 <h3>☕ Support The Creator</h3>
@@ -417,35 +368,32 @@ Buy Me Coffee
 
 <div class="title">Bachelor Point Season 05 (1080p) G-Drive</div>
 
-<button class="link-btn" onclick="go('ep97_100')">🎬 Episode 97-100 (1080p) For 🍎 I-Phone User</button>
+<button class="link-btn" onclick="go('ep105_112')">🎬 Episode 105-112 (1080p) For 🍎 I-Phone User</button>
 
-<button class="link-btn" onclick="go('ep101_104')">🎬 Episode 101-104 (1080p) For 🍎 I-Phone User</button>
+<div class="title">Bachelor Point Season 05 Episode 105-112 Single Episode (1080p)</div>
 
-<div class="title">Bachelor Point Season 05 Episode 97-100 Single Episode (1080p)</div>
-
-<button class="link-btn" onclick="go('ep97')">🎬 Episode 97 (1080p)</button>
-<button class="link-btn" onclick="go('ep98')">🎬 Episode 98 (1080p)</button>
-<button class="link-btn" onclick="go('ep99')">🎬 Episode 99 (1080p)</button>
-<button class="link-btn" onclick="go('ep100')">🎬 Episode 100 (1080p)</button>
-<button class="link-btn" onclick="go('ep101')">🎬 Episode 101 (1080p)</button>
-<button class="link-btn" onclick="go('ep102')">🎬 Episode 102 (1080p)</button>
-<button class="link-btn" onclick="go('ep103')">🎬 Episode 103 (1080p)</button>
-<button class="link-btn" onclick="go('ep104')">🎬 Episode 104 (1080p)</button>
+<button class="link-btn" onclick="go('ep105')">🎬 Episode 105 (1080p)</button>
+<button class="link-btn" onclick="go('ep106')">🎬 Episode 106 (1080p)</button>
+<button class="link-btn" onclick="go('ep107')">🎬 Episode 107 (1080p)</button>
+<button class="link-btn" onclick="go('ep108')">🎬 Episode 108 (1080p)</button>
+<button class="link-btn" onclick="go('ep109')">🎬 Episode 109 (1080p)</button>
+<button class="link-btn" onclick="go('ep110')">🎬 Episode 110 (1080p)</button>
+<button class="link-btn" onclick="go('ep111')">🎬 Episode 111 (1080p)</button>
+<button class="link-btn" onclick="go('ep112')">🎬 Episode 112 (1080p)</button>
 
 </div>
 
 <script>
 const links = {
-  ep97_100: "https://drive.google.com/file/d/1aIr2DMQmTBNzgDi0BeMPlyRSp7lTlF7O/view?usp=drivesdk",
-  ep101_104: "https://drive.google.com/file/d/1qW3ogToKvVv1CEi1bv2h4JxQWEqnMpeX/view?usp=drivesdk",
-  ep97: "https://instant.busycdn.xyz/f91a747289a6a7251b1f01973892d8707b7da13dc1deaf32690656602b2c2166aa57a722b8e90082848889323cd75522e5d7ed3ad6b61f16c6e4eb1f3980cf97a085430b5b6b75247f69f7b0ca49e41ad768fe4216580053bea45b8b93d5a768a6a714fc6ba4a8e0233e86b32b344691::4d526ad6c211ab130fa6b07cd4eae1da?bytes=560224115",
-  ep98: "https://instant.busycdn.xyz/b348932c4077cf3b37dfb7f6e46ff912b64b32fc3d8fbac5ed0e2caa78c2a6d22d2b3bec858407df60d6ff66e87b0216b8b4ff1fba5f31284688a804f4af135624f9fffdd9fc06641c5a02241fc6adf7e88eb0734ea332c6cee1e33841fe97edb5acb5184943fbcdd2e4bf01ef89ffc0::075df40b138fd4b0a642f239a042e675?bytes=529585398",
-  ep99: "https://instant.busycdn.xyz/d0d9d3f5b4047d03c9af47d2544a82d509b327ccaadb1eef0ac42572902139b1eddfd965f01bb7aa9b38f393843ca2ce914f0e292165c6bd2d3928f6de650d59920a13ba5fe9cbc31d65d6b4633fcf3791c4d757c3940e62b3bea16d4f7ddec7706f0c2f2dd870cbe31d28a8ecf512a1::773c616d2ed4b11d157dafe5395c1a08?bytes=581873330",
-  ep100: "https://instant.busycdn.xyz/2b43a82a8846e32ca20ee1a124ef80a84aa22c239624a4b51e7b0ecc7daa416cfdf35723f5d5def8d79a679a391df4ab95786d844510962d40a24350b3d4f7ed5c815b8b423de5cd43625fa73948b5853795b4260840a99bd244b93ed727324efde2f044d05aecdc0f41cb282d755516::84ab0c40e42665e7a0eb4b1120ab60a6?bytes=586201551",
-  ep101: "https://pub-87e02c2f0e8941be964da8513404e392.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E101%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
-  ep102: "https://pub-af45f79dddd146dcaf6b25c8102f263e.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E102%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
-  ep103: "https://pub-af45f79dddd146dcaf6b25c8102f263e.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E103%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
-  ep104: "https://pub-5fec8fc694d94931914e330ee37acaab.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E104%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv"
+  ep105_112: "https://direct-dl.lol/v/?file=AF1QipPsDcgsNfWosav4CBq855EHeTyxjcVKE1ltDr7m",
+  ep105: "https://pub-35214751cbf1431ba7b6d74f519e61d2.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E105%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep106: "https://pub-35214751cbf1431ba7b6d74f519e61d2.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E106%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep107: "https://pub-35214751cbf1431ba7b6d74f519e61d2.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E107%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep108: "https://pub-35214751cbf1431ba7b6d74f519e61d2.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E108%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep109: "https://pub-4e135af7e68844d8816cb0f642379557.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E109%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep110: "https://pub-4e135af7e68844d8816cb0f642379557.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E110%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep111: "https://pub-4e135af7e68844d8816cb0f642379557.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E111%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv",
+  ep112: "https://pub-35214751cbf1431ba7b6d74f519e61d2.r2.dev/CINEFREAK.TOP%20-%20Bachelor%20Point%20%5BS05E112%5D%20WEB-DL%20%5BBengali%5D%20BONGO%201080p.mkv"
 };
 
 const sound = document.getElementById("bgSound");
@@ -453,79 +401,53 @@ const sound = document.getElementById("bgSound");
 window.addEventListener("load",()=>{
   sound.play().catch(()=>{});
 
-  // 🔥 hide loader
-  setTimeout(()=>{
-    document.getElementById("preloader").style.display="none";
-  },200);
+  document.body.addEventListener("click",()=>{
+    sound.play().catch(()=>{});
+  },{once:true});
+
+  const rain=document.querySelector('.rain');
+  for(let i=0;i<30;i++){
+    let d=document.createElement('span');
+    d.style.left=Math.random()*100+"vw";
+    d.style.animationDuration=(Math.random()*2+1)+"s";
+    d.style.animationDelay=(Math.random()*2)+"s";
+    rain.appendChild(d);
+  }
+
+  const lastSeen=localStorage.getItem("coffeePopupSeen");
+
+  if(
+    !lastSeen ||
+    (Date.now()-parseInt(lastSeen)) > 86400000
+  ){
+    setTimeout(()=>{
+      document.getElementById("coffeePopup").style.display="flex";
+    },2500);
+  }
 });
-
-document.body.addEventListener("click",()=>{
-  sound.play();
-},{once:true});
-
-const rain=document.querySelector('.rain');
-for(let i=0;i<30;i++){
-let d=document.createElement('span');
-d.style.left=Math.random()*100+"vw";
-d.style.animationDuration=(Math.random()*2+1)+"s";
-rain.appendChild(d);
-}
-
-const dvd=document.querySelector('.dvd');
-let x=100,y=100,dx=1.5,dy=1.5;
-
-function animate(){
-const w=innerWidth-dvd.clientWidth;
-const h=innerHeight-dvd.clientHeight;
-
-x+=dx;
-y+=dy;
-
-if(x<=0||x>=w)dx*=-1;
-if(y<=0||y>=h)dy*=-1;
-
-dvd.style.transform=`translate(${x}px,${y}px)`;
-requestAnimationFrame(animate);
-}
-animate();
 
 function go(key){
   const url = links[key];
   if(url){
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 }
 
 function closeCoffeePopup(){
-document.getElementById("coffeePopup").style.display="none";
-localStorage.setItem("coffeePopupSeen",Date.now());
+  document.getElementById("coffeePopup").style.display="none";
+  localStorage.setItem("coffeePopupSeen",Date.now());
 }
-
-window.addEventListener("load",()=>{
-
-const lastSeen=localStorage.getItem("coffeePopupSeen");
-
-if(
-!lastSeen ||
-(Date.now()-parseInt(lastSeen)) > 86400000
-){
-setTimeout(()=>{
-document.getElementById("coffeePopup").style.display="flex";
-},2500);
-}
-
-});
 </script>
 <!-- Floating Coffee Button -->
 <a href="https://www.supportkori.com/shihabrahman"
 class="coffee-float"
 target="_blank">
 ☕
-<span>Buy Me Coffee</span>
+<span>SUPPORT</span>
 </a>
 
 <!-- Premium Popup -->
-<div class="popup-overlay" id="coffeePopup">
+<div class="popup-overlay" id="coffeePopup" onclick="if(event.target===this) closeCoffeePopup()">
 <div class="popup">
 
 <h2>☕ Enjoying The Content?</h2>
